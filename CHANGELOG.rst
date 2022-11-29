@@ -56,6 +56,9 @@ Added
 
   Contributed by @winem
 
+* Added option to checkout git submodules when downloading/installing packs #5814
+  Contributed by @jk464
+
 Changed
 ~~~~~~~
 * Remove `distutils` dependencies across the project. #5992
