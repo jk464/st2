@@ -14,6 +14,7 @@
 # limitations under the License.
 
 import sys
+from os import listdir
 
 from oslo_config import cfg
 
@@ -21,9 +22,11 @@ from st2common import config
 from st2common import log as logging
 from st2common.config import do_register_cli_opts
 from st2common.script_setup import setup as common_setup
+from st2common.util.pack import get_pack_metadata
 from st2common.util.pack_management import download_pack
 from st2common.util.pack_management import get_and_set_proxy_config
 from st2common.util.virtualenvs import setup_pack_virtualenv
+from st2common.content.utils import get_pack_base_path
 
 __all__ = ["main"]
 
@@ -53,28 +56,37 @@ def _register_cli_opts():
             help="True to force pack installation and ignore install "
             "lock file if it exists.",
         ),
+        cfg.BoolOpt(
+            "get-dependencies",
+            default=False,
+            help="True to install pack dependencies",
+        ),
     ]
     do_register_cli_opts(cli_opts)
 
 
-def main(argv):
-    _register_cli_opts()
+def get_pack_dependencies(pack, verify_ssl, force, dependencies, proxy_config):
+    pack_path = get_pack_base_path(pack)
 
-    # Parse CLI args, set up logging
-    common_setup(
-        config=config,
-        setup_db=False,
-        register_mq_exchanges=False,
-        register_internal_trigger_types=False,
-    )
+    try:
+        pack_metadata = get_pack_metadata(pack_dir=pack_path)
+        result = pack_metadata.get("dependencies", None)
+    except Exception:
+        LOG.error("Could not open pack.yaml at location %s" % pack_path)
+        result = None
+    finally:
+        if result:
+            LOG.info('Getting pack dependencies for pack "%s"' % (pack))
+            download_packs(result, verify_ssl, force, dependencies, proxy_config)
+            LOG.info('Successfully got pack dependencies for pack "%s"' % (pack))
 
-    packs = cfg.CONF.pack
-    verify_ssl = cfg.CONF.verify_ssl
-    force = cfg.CONF.force
 
-    proxy_config = get_and_set_proxy_config()
-
+def download_packs(packs, verify_ssl, force, dependencies, proxy_config):
     for pack in packs:
+        if pack in listdir("/opt/stackstorm/packs"):
+            LOG.info('Pack already installed "%s"' % (pack))
+            continue
+
         # 1. Download the pack
         LOG.info('Installing pack "%s"' % (pack))
         result = download_pack(
@@ -106,5 +118,31 @@ def main(argv):
             no_download=True,
         )
         LOG.info('Successfully set up virtualenv for pack "%s"' % (pack_name))
+
+        if dependencies:
+            get_pack_dependencies(
+                pack_name, verify_ssl, force, dependencies, proxy_config
+            )
+
+
+def main(argv):
+    _register_cli_opts()
+
+    # Parse CLI args, set up logging
+    common_setup(
+        config=config,
+        setup_db=False,
+        register_mq_exchanges=False,
+        register_internal_trigger_types=False,
+    )
+
+    packs = cfg.CONF.pack
+    verify_ssl = cfg.CONF.verify_ssl
+    force = cfg.CONF.force
+    dependencies = cfg.CONF.get_dependencies
+
+    proxy_config = get_and_set_proxy_config()
+
+    download_packs(packs, verify_ssl, force, dependencies, proxy_config)
 
     return 0
