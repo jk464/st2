@@ -16,7 +16,7 @@ gitpython==3.1.15
 # Needed by gitpython, old versions used to bundle it
 gitdb==4.0.2
 # Note: greenlet is used by eventlet
-greenlet==1.0.0
+greenlet==1.1.2
 gunicorn==20.1.0
 jsonpath-rw==1.4.0
 jsonschema==2.6.0
