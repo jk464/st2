@@ -36,7 +36,7 @@
 //     "networkx",
 //     "orjson",
 //     "orquesta@ git+https://github.com/StackStorm/orquesta.git@v1.5.0",
-//     "oslo.config<1.13,>=1.12.1",
+//     "oslo.config>=6.9.0",
 //     "paramiko",
 //     "pika",
 //     "pip",
@@ -2718,24 +2718,42 @@
           "artifacts": [
             {
               "algorithm": "sha256",
-              "hash": "d4501d11ce955d010208019f04ebba0ce58a5f1a9033da9193cfa33e4854d74b",
-              "url": "https://files.pythonhosted.org/packages/c7/82/263fa79866098034917be0def7ab4979480e6f429732cd6cd9f4e0405ec5/oslo.config-1.12.1-py2.py3-none-any.whl"
+              "hash": "643130555aa66c316d6972a2530087ca8b7f8c42ed25826815536dfa5e1e12eb",
+              "url": "https://files.pythonhosted.org/packages/c6/e0/2f61454d706d8c679d4907559b8961d1d7d018cddcc2de237ff362d784e7/oslo.config-8.8.1-py3-none-any.whl"
             },
             {
               "algorithm": "sha256",
-              "hash": "d43880e88a55b13840dfd80495837017d4da3ad96aed288345410e0b35138477",
-              "url": "https://files.pythonhosted.org/packages/90/5f/c90379a91cc41ab849eb789dd75a83533cc35caabe535f3118f42b0906b2/oslo.config-1.12.1.tar.gz"
+              "hash": "a8d50bd011332df221252a9685cfab1d15ecb225c9ebf37c7ba26e5bc5df00a4",
+              "url": "https://files.pythonhosted.org/packages/34/71/c75a2249a9f50476053e6e4ce2407a51c4abb25fc74f805355e92a42d985/oslo.config-8.8.1.tar.gz"
             }
           ],
           "project_name": "oslo-config",
           "requires_dists": [
-            "argparse",
-            "netaddr>=0.7.12",
-            "six>=1.9.0",
-            "stevedore>=1.3.0"
+            "PyYAML>=5.1",
+            "bandit<1.7.0,>=1.6.0; extra == \"test\"",
+            "coverage!=4.4,>=4.0; extra == \"test\"",
+            "debtcollector>=1.2.0",
+            "fixtures>=3.0.0; extra == \"test\"",
+            "hacking<3.1.0,>=3.0.1; extra == \"test\"",
+            "importlib-metadata>=1.7.0; python_version < \"3.8\"",
+            "mypy>=0.720; extra == \"test\"",
+            "netaddr>=0.7.18",
+            "oslo.i18n>=3.15.3",
+            "oslo.log>=3.36.0; extra == \"test\"",
+            "oslotest>=3.2.0; extra == \"test\"",
+            "pre-commit>=2.6.0; extra == \"test\"",
+            "requests-mock>=1.5.0; extra == \"test\"",
+            "requests>=2.18.0",
+            "rfc3986>=1.2.0",
+            "rst2txt>=1.1.0; extra == \"rst_generator\"",
+            "sphinx!=2.1.0,>=1.8.0; extra == \"rst_generator\"",
+            "stestr>=2.1.0; extra == \"test\"",
+            "stevedore>=1.20.0",
+            "testscenarios>=0.4; extra == \"test\"",
+            "testtools>=2.2.0; extra == \"test\""
           ],
-          "requires_python": null,
-          "version": "1.12.1"
+          "requires_python": ">=3.6",
+          "version": "8.8.1"
         },
         {
           "artifacts": [
@@ -4160,6 +4178,26 @@
           ],
           "requires_python": null,
           "version": "1.3.4"
+        },
+        {
+          "artifacts": [
+            {
+              "algorithm": "sha256",
+              "hash": "a86d6e1f5b1dc238b218b012df0aa79409667bb209e58da56d0b94704e712a97",
+              "url": "https://files.pythonhosted.org/packages/c4/e5/63ca2c4edf4e00657584608bee1001302bbf8c5f569340b78304f2f446cb/rfc3986-1.5.0-py2.py3-none-any.whl"
+            },
+            {
+              "algorithm": "sha256",
+              "hash": "270aaf10d87d0d4e095063c65bf3ddbc6ee3d0b226328ce21e036f946e421835",
+              "url": "https://files.pythonhosted.org/packages/79/30/5b1b6c28c105629cc12b33bdcbb0b11b5bb1880c6cfbd955f9e792921aa8/rfc3986-1.5.0.tar.gz"
+            }
+          ],
+          "project_name": "rfc3986",
+          "requires_dists": [
+            "idna; extra == \"idna2008\""
+          ],
+          "requires_python": null,
+          "version": "1.5.0"
         },
         {
           "artifacts": [
@@ -6012,7 +6050,7 @@
     "networkx",
     "orjson",
     "orquesta",
-    "oslo.config<1.13,>=1.12.1",
+    "oslo.config>=6.9.0",
     "paramiko",
     "pika",
     "pip",
