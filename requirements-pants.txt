@@ -43,7 +43,7 @@ pip
 prance
 prettytable
 # For st2client: prompt-toolkit v2+ does not have prompt_toolkit.token.Token
-prompt-toolkit<2
+prompt-toolkit
 psutil
 pymongo
 # pyrabbit used in an integration test
