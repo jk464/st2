@@ -95,6 +95,7 @@ def download_packs(packs, verify_ssl, force, dependencies, proxy_config):
             force=force,
             proxy_config=proxy_config,
             force_permissions=True,
+            checkout_submodules=True,
         )
 
         # Raw pack name excluding the version
