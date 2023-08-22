@@ -35,6 +35,12 @@ Added
   Contributed by @maxfactor1
 
 
+Fixed
+~~~~~
+
+* Bumped `paramiko` to `2.10.5` to fix an issue with SSH Certs - https://github.com/paramiko/paramiko/issues/2017
+  Contributed by @jk464
+
 3.8.0 - November 18, 2022
 -------------------------
 
