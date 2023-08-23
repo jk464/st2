@@ -7,12 +7,12 @@ chardet<3.1.0
 cffi<1.15.0
 # NOTE: 2.0 version breaks pymongo work with hosts
 dnspython>=1.16.0,<2.0.0
-cryptography==3.4.7
+cryptography==41.0.2
 # Note: 0.20.0 removed select.poll() on which some of our code and libraries we
 # depend on rely
 eventlet==0.30.2
 flex==6.14.1
-gitpython==3.1.15
+gitpython==3.1.30
 # Needed by gitpython, old versions used to bundle it
 gitdb==4.0.2
 # Note: greenlet is used by eventlet
@@ -36,7 +36,7 @@ decorator==4.4.2
 # See https://github.com/StackStorm/st2/issues/4160#issuecomment-394386433 for details
 oslo.config>=1.12.1,<1.13
 oslo.utils<5.0,>=4.0.0
-paramiko==2.10.1
+paramiko==2.10.5
 passlib==1.7.4
 prompt-toolkit==1.0.15
 pyinotify==0.9.6 ; platform_system=="Linux"
@@ -44,14 +44,14 @@ pymongo==3.11.3
 pyparsing<3
 zstandard==0.15.2
 # pyOpenSSL 22.0.0 requires cryptography>=35.0
-pyOpenSSL<=21.0.0
+pyopenssl>22.1.0
 python-editor==1.0.4
 python-keyczar==0.716
 pytz==2021.1
 pywinrm==0.4.1
 pyyaml==5.4.1
 redis==4.1.4
-requests[security]==2.25.1
+requests[security]==2.31.0
 retrying==1.3.3
 routes==2.4.1
 semver==2.13.0
@@ -59,7 +59,7 @@ six==1.13.0
 argparse==1.12.2
 argcomplete==1.12.2
 prettytable==2.1.0
-importlib-metadata==3.10.1
+importlib-metadata==4.10.1
 # importlib-metadata requires typing-extensions but v4.2.0 requires py3.7+
 typing-extensions<4.2
 # NOTE: sseclient has various issues which sometimes hang the connection for a long time, etc.
@@ -68,8 +68,8 @@ stevedore==1.30.1
 tenacity>=3.2.1,<7.0.0
 tooz==2.8.0
 # Note: virtualenv embeds wheels for pip, wheel, and setuptools. So pinning virtualenv pins those as well.
-# virtualenv==20.4.0 (<21) has pip==20.3.3 wheel==0.36.2 setuptools==51.3.3
-virtualenv==20.4.0
+# virtualenv==20.16.7 (<21) has pip==22.3.1 wheel==0.38.4 setuptools==65.5.1
+virtualenv==20.16.7
 webob==1.8.7
 zake==0.2.2
 # test requirements below
@@ -82,3 +82,4 @@ psutil==5.8.0
 python-dateutil==2.8.1
 python-statsd==2.1.0
 orjson==3.5.2
+zipp<3.16.0
