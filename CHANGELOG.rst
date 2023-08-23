@@ -37,6 +37,9 @@ Added
 * Added option to checkout git submodules when downloading/installing packs #5814
   Contributed by @jk464
 
+* Added get-dependencies option to install_pack.py #5994
+  Contributed by @jk464
+
 Fixed
 ~~~~~
 
